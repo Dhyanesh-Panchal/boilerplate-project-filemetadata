@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    long long int n;
+    cin >> n;
+    long long int b[n], c1 = 0, c2 = 0, issame = 1;
+    cin >> b[0];
+    for (int i = 1; i < n; i++)
+    {
+        cin >> b[i];
+        if (b[i] != b[i - 1])
+        {
+            issame = 0;
+        }
+    }
+    if (issame)
+    {
+        cout << 0 << " " << (n) * (n - 1) / 2 << endl;
+        return 0;
+    }
+    sort(b, b + n);
+    int i = 0;
+    while (b[i] == b[i + 1])
+    {
+        c1++, i++;
+    }
+    c1++;
+    i = n - 1;
+    while (b[i - 1] == b[i])
+    {
+        c2++;
+        i--;
+    }
+    c2++;
+
+    cout << b[n - 1] - b[0] << " " << c1 * c2 << endl;
+
+    return 0;
+}
